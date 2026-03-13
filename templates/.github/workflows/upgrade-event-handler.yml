@@ -20,6 +20,7 @@ jobs:
       - name: Upgrade thepopebot
         run: |
           docker exec thepopebot-event-handler bash -c '
+            set -e
             export GH_TOKEN=$(grep "^GH_TOKEN=" /app/.env | cut -d= -f2-)
             echo "${GH_TOKEN}" | gh auth login --with-token
             gh auth setup-git

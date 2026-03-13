@@ -89,6 +89,7 @@ async function init() {
   const packageDir = path.join(__dirname, '..');
   const templatesDir = path.join(packageDir, 'templates');
   const noManaged = args.includes('--no-managed');
+  const noInstall = args.includes('--no-install');
 
   // Guard: warn if the directory is not empty (unless it's an existing thepopebot project)
   const entries = fs.readdirSync(cwd);
@@ -326,8 +327,10 @@ async function init() {
   }
 
   // Run npm install to ensure lock file reflects installed dependencies
-  console.log('\nInstalling dependencies...\n');
-  execSync('npm install', { stdio: 'inherit', cwd });
+  if (!noInstall) {
+    console.log('\nInstalling dependencies...\n');
+    execSync('npm install', { stdio: 'inherit', cwd });
+  }
 
   // Create or update .env with auto-generated infrastructure values
   const envPath = path.join(cwd, '.env');

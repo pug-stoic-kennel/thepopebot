@@ -111,72 +111,22 @@ export function CodeModeToggle({
     const repoName = repo ? repo.split('/').pop() : '';
 
     return (
-      <div className="flex items-center justify-between gap-2 text-sm min-w-0">
-        {/* Left: branch flow — feature branch truncates dynamically to fill available space */}
+      <div className="flex items-center gap-2 text-sm min-w-0 px-1 py-0.5">
         <div className="flex items-center gap-1.5 text-muted-foreground min-w-0 overflow-hidden">
           <GitBranchIcon size={14} className="shrink-0" />
-          {repoName && <span className="shrink-0" title={repo}>{repoName}</span>}
+          {repoName && <span className="shrink-0 cursor-default" title={repo}>{repoName}</span>}
           {branch && (
             <>
               <span className="shrink-0 text-muted-foreground/30">/</span>
-              <span className="shrink-0 font-medium text-foreground" title={branch}>{branch}</span>
+              <span className="shrink-0 font-medium text-foreground cursor-default" title={branch}>{branch}</span>
             </>
           )}
           {featureBranch && (
             <>
               <span className="shrink-0 text-muted-foreground/50">&larr;</span>
-              <span className="text-primary truncate min-w-[60px]" title={featureBranch}>{featureBranch}</span>
+              <span className="text-primary truncate min-w-[60px] cursor-default" title={featureBranch}>{featureBranch}</span>
             </>
           )}
-        </div>
-
-        {/* Right: mode toggle */}
-        <div className="flex items-center shrink-0">
-          <button
-            type="button"
-            onClick={handleModeToggle}
-            disabled={togglingMode || isInteractiveActive}
-            className={cn(
-              'inline-flex items-center gap-1.5 group',
-              isInteractiveActive && 'opacity-50 pointer-events-none'
-            )}
-            role="switch"
-            aria-checked={isInteractiveActive}
-            aria-label="Toggle interactive mode"
-          >
-            {togglingMode && (
-              <svg className="animate-spin h-3 w-3 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-            )}
-            {/* Track */}
-            <span
-              className={cn(
-                'relative inline-flex h-4 w-7 shrink-0 rounded-full transition-colors duration-200',
-                togglingMode && 'opacity-50',
-                isInteractiveActive ? 'bg-primary' : 'bg-muted-foreground/30'
-              )}
-            >
-              {/* Knob */}
-              <span
-                className={cn(
-                  'absolute top-0.5 left-0.5 h-3 w-3 rounded-full bg-white shadow-sm transition-transform duration-200',
-                  isInteractiveActive && 'translate-x-3'
-                )}
-              />
-            </span>
-            {/* Label */}
-            <span className={cn(
-              'text-xs font-medium transition-colors whitespace-nowrap',
-              isInteractiveActive ? 'text-primary' : 'text-muted-foreground'
-            )}>
-              {togglingMode
-                ? (isInteractiveActive ? 'Closing...' : 'Launching...')
-                : (isInteractiveActive ? 'Interactive' : 'Headless')
-              }
-            </span>
-          </button>
         </div>
       </div>
     );

@@ -1,8 +1,8 @@
 ---
-description: Rebase feature branch onto base branch, resolve any conflicts with AI, and merge back
+description: Rebase feature branch onto base branch, resolve any conflicts with AI, and push
 ---
 
-Merge the current feature branch back into its base branch using rebase. Follow these steps carefully.
+Rebase the current feature branch onto the latest base branch, resolving any conflicts. Follow these steps carefully.
 
 ## Step 1 — Identify branches and verify state
 
@@ -75,18 +75,7 @@ If >10 conflict rounds, run `git rebase --abort` and explain the situation rathe
 git push --force-with-lease origin HEAD
 ```
 
-## Step 5 — Merge into base and push
-
-```
-git checkout $BRANCH
-git pull origin $BRANCH
-git merge $FEATURE_BRANCH
-git push origin $BRANCH
-```
-
-The merge should be fast-forward after rebase. If it is NOT fast-forward, STOP and explain — do not force it.
-
-## Step 6 — Report
+## Step 5 — Report
 
 Provide a summary:
 - Branches involved (feature → base)
@@ -97,7 +86,7 @@ Provide a summary:
   - **Base side**: what the base branch changed
   - **Resolution**: what you did and why
   - **Risk**: low (additive/obvious), medium (judgment call), or high (logic change — user should review)
-- Confirm merge and push succeeded
+- Confirm push succeeded
 - `git log --oneline -10`
 
 If there are $ARGUMENTS, use them as priority guidance for conflict resolution decisions.

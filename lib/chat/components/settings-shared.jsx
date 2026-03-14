@@ -37,7 +37,7 @@ export function formatDate(ts) {
 
 export function StatusBadge({ isSet }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 text-xs ${isSet ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`}>
+    <span className={`inline-flex items-center gap-1.5 text-xs ${isSet ? 'text-green-500' : 'text-muted-foreground'}`}>
       <span className={`w-1.5 h-1.5 rounded-full ${isSet ? 'bg-green-500' : 'bg-muted-foreground/40'}`} />
       {isSet ? 'Set' : 'Not set'}
     </span>
@@ -154,7 +154,7 @@ export function SecretRow({
         <button
           onClick={() => setEditing(true)}
           className={`rounded-md px-2.5 py-1.5 text-xs font-medium border transition-colors ${
-            saved ? 'border-green-500 text-green-600' : 'border-border text-muted-foreground hover:bg-accent hover:text-foreground'
+            saved ? 'border-green-500 text-green-500' : 'border-border text-muted-foreground hover:bg-accent hover:text-foreground'
           }`}
         >
           {saved ? <span className="inline-flex items-center gap-1"><CheckIcon size={12} /> Saved</span> : isSet ? 'Update' : 'Set'}
@@ -262,7 +262,7 @@ export function VariableRow({ name, isSet, currentValue, onUpdate, onDelete }) {
         <button
           onClick={() => { setEditing(true); if (currentValue) setValue(currentValue); }}
           className={`rounded-md px-2.5 py-1.5 text-xs font-medium border transition-colors ${
-            saved ? 'border-green-500 text-green-600' : 'border-border text-muted-foreground hover:bg-accent hover:text-foreground'
+            saved ? 'border-green-500 text-green-500' : 'border-border text-muted-foreground hover:bg-accent hover:text-foreground'
           }`}
         >
           {saved ? <span className="inline-flex items-center gap-1"><CheckIcon size={12} /> Saved</span> : isSet ? 'Update' : 'Set'}

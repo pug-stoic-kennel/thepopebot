@@ -102,7 +102,7 @@ export function ProfileLoginPage({ session }) {
         <div className={`rounded-lg border p-3 text-sm ${
           message.type === 'error'
             ? 'border-destructive/30 bg-destructive/5 text-destructive'
-            : 'border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-400'
+            : 'border-green-500/30 bg-green-500/5 text-green-500'
         }`}>
           {message.text}
         </div>

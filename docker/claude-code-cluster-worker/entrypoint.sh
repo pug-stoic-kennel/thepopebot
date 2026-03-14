@@ -33,7 +33,7 @@ cat > ~/.claude.json << ENDJSON
   "hasCompletedOnboarding": true,
   "projects": {
     "${WORKSPACE_DIR}": {
-      "allowedTools": [],
+      "allowedTools": ["WebSearch"],
       "hasTrustDialogAccepted": true,
       "hasTrustDialogHooksAccepted": true
     }

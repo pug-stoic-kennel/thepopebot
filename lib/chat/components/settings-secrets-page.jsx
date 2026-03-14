@@ -137,7 +137,7 @@ export function ApiKeysListPage() {
       {newKey && (
         <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-4 mb-4">
           <div className="flex items-start justify-between gap-3 mb-2">
-            <p className="text-sm font-medium text-green-600 dark:text-green-400">
+            <p className="text-sm font-medium text-green-500">
               API key created — copy it now. You won't be able to see it again.
             </p>
             <button

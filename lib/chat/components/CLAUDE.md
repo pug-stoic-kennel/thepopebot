@@ -80,3 +80,52 @@ Always "Set" / "Not set" — never "Configured".
 - Width: `max-w-md`
 - Title: `text-base font-semibold mb-4`
 - Use the shared `Dialog` component, not inline modal markup
+
+## Color System
+
+### Semantic Tokens
+
+All colors use CSS custom properties defined in `web/app/globals.css`. Use these Tailwind classes — never raw hex in JSX.
+
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `background` | `#ffffff` | `#0a0a0a` | Page/component backgrounds |
+| `foreground` | `#171717` | `#ededed` | Primary text |
+| `primary` | `#171717` | `#ededed` | Primary buttons, focus rings |
+| `primary-foreground` | `#ffffff` | `#0a0a0a` | Text on primary buttons |
+| `muted` | `#f5f5f5` | `#171717` | Subtle backgrounds (input fields, code blocks) |
+| `muted-foreground` | `#737373` | `#a3a3a3` | Secondary text, labels, timestamps |
+| `border` | `#e5e5e5` | `#262626` | Borders, dividers, skeleton bases |
+| `input` | `#f5f5f5` | `#171717` | Form input backgrounds |
+| `destructive` | `#ef4444` | `#ef4444` | Error text, delete buttons |
+| `accent` | `#f5f5f5` | `#1a1a1a` | Hover backgrounds for secondary buttons |
+| `card` | `#ffffff` | `#0a0a0a` | Card surface backgrounds |
+
+### Status Colors
+
+| State | Text | Dot/Icon | Badge | Banner |
+|-------|------|----------|-------|--------|
+| Success | `text-green-500` | `bg-green-500` | `bg-green-500/10 text-green-500` | `border-green-500/30 bg-green-500/5` |
+| Warning | `text-yellow-500` | `bg-yellow-500` | `bg-yellow-500/10 text-yellow-500` | `border-yellow-500/30 bg-yellow-500/5` |
+| Error | `text-destructive` | `bg-destructive` | `bg-destructive/10 text-destructive` | `border-destructive/30 bg-destructive/5` |
+
+### Accepted Exceptions
+
+These patterns use Tailwind color classes directly instead of semantic tokens. They are intentional — do not "fix" them:
+
+- **Tool call icons**: `text-green-500` (done) — small inline status icons in `message.jsx`
+- **Terminal view**: hardcoded hex colors for terminal theming in `terminal-view.jsx`
+- **Upgrade UI**: `text-emerald-500`, `bg-emerald-500`, `border-emerald-500/*` — the upgrade dialog uses emerald as its brand accent throughout `upgrade-dialog.jsx`
+
+### Overlay Standard
+
+All modal/dialog backdrops use `bg-black/50`. Do not use `/40` or other opacities.
+
+### Forbidden Patterns
+
+- `text-red-400`, `text-red-500`, `bg-red-500` — use `text-destructive` / `bg-destructive` instead
+- `text-green-600`, `text-green-400` — use `text-green-500` instead
+- `text-yellow-600`, `text-yellow-400` — use `text-yellow-500` instead
+- Raw hex values in JSX `style` props (except terminal theming)
+- Inventing new color shades not listed above
+- Using tokens not defined in `globals.css` (check the table above)

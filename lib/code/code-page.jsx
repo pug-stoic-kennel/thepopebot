@@ -311,9 +311,10 @@ export default function CodePage({ session, codeWorkspaceId }) {
                     ? `/code/${codeWorkspaceId}/ws`
                     : `/code/${codeWorkspaceId}/term/${tab.id}/ws`}
                   isActive={activeTabId === tab.id}
-                  showToolbar={tab.primary === true}
+                  showToolbar={true}
                   ensureContainer={tab.primary ? ensureCodeWorkspaceContainer : undefined}
-                  onCloseSession={tab.primary ? handleOpenCloseDialog : undefined}
+                  onCloseSession={tab.primary ? handleOpenCloseDialog : () => setClosingTabId(tab.id)}
+                  closeLabel={tab.primary ? 'Close Session' : 'Close Tab'}
                 />
               </div>
             ))}

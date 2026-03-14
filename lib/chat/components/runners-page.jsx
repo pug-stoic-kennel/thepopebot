@@ -48,7 +48,7 @@ function LoadingSkeleton() {
 
 const conclusionBadgeStyles = {
   success: 'bg-green-500/10 text-green-500',
-  failure: 'bg-red-500/10 text-red-500',
+  failure: 'bg-destructive/10 text-destructive',
   cancelled: 'bg-yellow-500/10 text-yellow-500',
   skipped: 'bg-muted text-muted-foreground',
 };

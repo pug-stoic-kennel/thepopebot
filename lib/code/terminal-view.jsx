@@ -40,7 +40,7 @@ function resolveTheme(mode) {
 
 const THEME_CYCLE = ['dark', 'light', 'system'];
 
-export default function TerminalView({ codeWorkspaceId, wsPath, isActive = true, showToolbar = true, ensureContainer, onCloseSession }) {
+export default function TerminalView({ codeWorkspaceId, wsPath, isActive = true, showToolbar = true, ensureContainer, onCloseSession, closeLabel = 'Close Session' }) {
   const containerRef = useRef(null);
   const termRef = useRef(null);
   const fitAddonRef = useRef(null);
@@ -497,7 +497,7 @@ export default function TerminalView({ codeWorkspaceId, wsPath, isActive = true,
                   <line x1="4" y1="4" x2="12" y2="12" />
                   <line x1="12" y1="4" x2="4" y2="12" />
                 </svg>
-                Close Session
+                {closeLabel}
               </button>
             </div>
           </div>

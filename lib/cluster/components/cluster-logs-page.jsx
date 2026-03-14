@@ -231,7 +231,7 @@ export function ClusterLogsPage({ session, clusterId }) {
                                   <span>{duration}</span>
                                 )}
                                 {s.startedAt && !s.endedAt && (
-                                  <span className="text-yellow-600 dark:text-yellow-400">in progress</span>
+                                  <span className="text-yellow-500">in progress</span>
                                 )}
                               </div>
                             </div>

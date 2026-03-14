@@ -201,7 +201,7 @@ function ActiveConfig({ settings, onSave }) {
           <label className="text-sm font-medium shrink-0">Web Search</label>
           <div className="flex items-center gap-3">
             {saving && <span className="text-xs text-muted-foreground">Saving...</span>}
-            {saved && <span className="text-xs text-green-600 dark:text-green-400 inline-flex items-center gap-1"><CheckIcon size={12} /> Saved</span>}
+            {saved && <span className="text-xs text-green-500 inline-flex items-center gap-1"><CheckIcon size={12} /> Saved</span>}
             <button
               onClick={handleWebSearchToggle}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${

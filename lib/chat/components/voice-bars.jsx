@@ -34,11 +34,11 @@ export function VoiceBars({ volumeRef, isRecording }) {
   if (!isRecording) return null;
 
   return (
-    <div ref={barsRef} className="flex items-center gap-[2px] px-1">
+    <div ref={barsRef} className="flex items-center justify-center gap-[2px]" style={{ width: '16px', height: '16px' }}>
       {Array.from({ length: BAR_COUNT }, (_, i) => (
         <div
           key={i}
-          className="w-[3px] rounded-full bg-red-500"
+          className="w-[2px] rounded-full bg-current"
           style={{ height: '3px', transition: 'height 80ms ease-out' }}
         />
       ))}

@@ -293,7 +293,7 @@ function RoleHeaderButton({ roleId, roleName, running, max, clusterId }) {
         disabled={triggering}
         className={`inline-flex items-center rounded-full px-3 py-1 text-xs transition-colors disabled:opacity-40 ${
           running > 0
-            ? 'bg-green-500/20 text-green-600 dark:text-green-400 hover:bg-green-500/30'
+            ? 'bg-green-500/20 text-green-500 hover:bg-green-500/30'
             : 'bg-muted/50 text-muted-foreground hover:bg-muted'
         }`}
       >
@@ -488,7 +488,7 @@ function StatsPanel({ containers }) {
                 </td>
                 <td className="text-right px-3 py-1">
                   {c.running
-                    ? <span className="text-green-600 dark:text-green-400">RUN</span>
+                    ? <span className="text-green-500">RUN</span>
                     : <span className="text-muted-foreground/60">STOP</span>}
                 </td>
               </tr>

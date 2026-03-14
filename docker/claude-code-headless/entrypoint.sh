@@ -50,7 +50,7 @@ cat > ~/.claude.json << ENDJSON
   "hasCompletedOnboarding": true,
   "projects": {
     "${WORKSPACE_DIR}": {
-      "allowedTools": [],
+      "allowedTools": ["WebSearch"],
       "hasTrustDialogAccepted": true,
       "hasTrustDialogHooksAccepted": true
     }
@@ -60,10 +60,17 @@ ENDJSON
 
 # Run Claude Code headlessly
 set +e
-claude -p "$HEADLESS_TASK" \
-    --dangerously-skip-permissions \
-    --verbose \
-    --output-format stream-json
+if [ "$HEADLESS_PERMISSION_MODE" = "plan" ]; then
+    claude --permission-mode plan \
+        -p "$HEADLESS_TASK" \
+        --verbose \
+        --output-format stream-json
+else
+    claude -p "$HEADLESS_TASK" \
+        --dangerously-skip-permissions \
+        --verbose \
+        --output-format stream-json
+fi
 AGENT_EXIT=$?
 set -e
 
@@ -80,11 +87,7 @@ if [ $AGENT_EXIT -eq 0 ]; then
             --dangerously-skip-permissions || exit 1
     }
     git push --force-with-lease origin HEAD
-    git checkout "$BRANCH"
-    git pull origin "$BRANCH"
-    git merge "$FEATURE_BRANCH"
-    git push origin "$BRANCH"
-    echo "MERGE_SUCCESS"
+    echo "PUSH_SUCCESS"
 else
     echo "AGENT_FAILED"
     exit $AGENT_EXIT

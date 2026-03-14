@@ -158,7 +158,7 @@ export function UpgradeDialog({ open, onClose, version, updateAvailable, changel
             </button>
 
             {result === 'error' && (
-              <p className="text-xs text-red-400 mt-3">
+              <p className="text-xs text-destructive mt-3">
                 Failed to trigger the upgrade workflow. Check that your GitHub token has workflow permissions.
               </p>
             )}

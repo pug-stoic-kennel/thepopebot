@@ -41,6 +41,31 @@ fi
 
 cd /job
 
+WORKSPACE_DIR=$(pwd)
+
+# Skip onboarding and trust dialogs
+mkdir -p ~/.claude
+cat > ~/.claude/settings.json << 'EOF'
+{
+  "theme": "dark",
+  "hasTrustDialogAccepted": true,
+  "skipDangerousModePermissionPrompt": true
+}
+EOF
+
+cat > ~/.claude.json << ENDJSON
+{
+  "hasCompletedOnboarding": true,
+  "projects": {
+    "${WORKSPACE_DIR}": {
+      "allowedTools": ["WebSearch"],
+      "hasTrustDialogAccepted": true,
+      "hasTrustDialogHooksAccepted": true
+    }
+  }
+}
+ENDJSON
+
 # Install npm deps for active skills (native deps need correct Linux arch)
 for skill_dir in /job/skills/active/*/; do
     if [ -f "${skill_dir}package.json" ]; then
